@@ -6,7 +6,8 @@ if($_SESSION['isLogin'] == true){
 }else{
     header("location: login.php");
 }
-$id=$_POST['id'];
+// $id=$_POST['id'];
+$id= $_GET['deleteId'];
 
 $sql = "DELETE FROM users WHERE id='$id'";
 

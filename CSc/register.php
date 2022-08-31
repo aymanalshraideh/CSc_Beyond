@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
   $lastName = $_POST['lname'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
   $repassword = $_POST['repassword'];
   $gender = $_POST['gender'];
   $address = $_POST['address'];
@@ -34,7 +35,7 @@ if (isset($_POST['submit'])) {
         if (preg_match($regexPassword, $password)) {
           $sql = 'INSERT INTO users (fname,lname, email, password, gender, address) VALUES (?,?,?,?,?,?)';
           $stInsert = $conn->prepare($sql);
-          $result = $stInsert->execute([$firstName, $lastName, $email, $password, $gender, $address]);
+          $result = $stInsert->execute([$firstName, $lastName, $email, $hashed_password, $gender, $address]);
           if ($result) {
             echo "<script>alert('Success Register User')</script>";
             header("location: login.php");

@@ -28,7 +28,9 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     if ($row['email'] == $email) {
-      if ($row['password'] == $password) {
+      $hashed_password=$row['password'];
+      
+      if(password_verify($password,$hashed_password)) {
         $_SESSION["email"] = $email;
         $_SESSION['fname'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];

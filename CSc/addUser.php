@@ -1,5 +1,6 @@
 <?php
 require 'conn.php';
+ob_start();
 session_start();
 if ($_SESSION['isLogin'] == true) {
 } else {
@@ -224,6 +225,7 @@ if ($_SESSION['isLogin'] == true) {
                 $lastName = $_POST['lname'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $gender = $_POST['gender'];
                 $address = $_POST['address'];
 
@@ -234,7 +236,7 @@ if ($_SESSION['isLogin'] == true) {
                         if (preg_match($regexPassword, $password)) {
                             $sql = 'INSERT INTO users (fname,lname, email, password, gender, address) VALUES (?,?,?,?,?,?)';
                             $stInsert = $conn->prepare($sql);
-                            $result = $stInsert->execute([$firstName, $lastName, $email, $password, $gender, $address]);
+                            $result = $stInsert->execute([$firstName, $lastName, $email, $hashed_password, $gender, $address]);
                             if ($result) {
                                 echo "<script>alert('Success Add User')</script>";
                                 header("location:index.php");
@@ -258,7 +260,7 @@ if ($_SESSION['isLogin'] == true) {
             ?>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Add User</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>

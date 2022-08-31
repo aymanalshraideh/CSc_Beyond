@@ -43,7 +43,7 @@ if($_SESSION['isLogin'] == true){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -158,13 +158,31 @@ if($_SESSION['isLogin'] == true){
 </head>
 
 <body>
-
+<!-- <script>
+function showHint(str) {
+    if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "allUsers.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script> -->
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><?php echo $_SESSION['fname'] ?></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <input type="search" class="form-control" onkeyup="showHint(this.value)" id="datatable-search-input">
+        <div id="txtHint">
+</div>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="logout.php">Sign out</a>
@@ -363,63 +381,9 @@ if($_SESSION['isLogin'] == true){
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-
-
-
-
-                                foreach ($rows as  $value) :
-
-                                    if ($value['email'] == $_SESSION['email']) {
-                                    } else {
-                                ?>
-                                        <tr>
-                                            <td><?php echo $value['id'] ?></td>
-                                            <td><?php echo $value['fname'] ?></td>
-                                            <td><?php echo $value['lname'] ?></td>
-                                            <td><?php echo $value['email'] ?></td>
-                                            <td><?php echo $value['address'] ?></td>
-                                            <td><?php echo $value['gender'] ?></td>
-                                            <?php if($value['activation']==1){ ?>
-                                            <td>Active</td>
-                                            <?php } else {?>
-                                                <td>Not Active</td>
-                                                <?php }?>
-                                            <td>
-                                                <form action="activation.php" method="post" style="display: inline-block;">
-                                                    <input type="hidden" name="active" value="<?php echo $value["activation"] ?>">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-info">Activate</button>
-                                                </form>
-                                            </td>
-                                            <td>
-
-                                            <form action="singleUserMark.php" method="post" style="display: inline-block;">
-                                                  
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-info">Marks</button>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="edit.php" method="GET" style="display: inline-block;">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-primary">Edit</button>
-                                                </form>
-                                                <form action="deleteUser.php" method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-
-
-
-                                        </tr>
-                                <?php }
-                                endforeach; ?>
-                            </tbody>
+                            <tbody id="table">
+      
+    </tbody>
                         </table>
                     </div>
                 <?php endif; ?>
@@ -479,9 +443,9 @@ if($_SESSION['isLogin'] == true){
         </div>
     </div>
 
-
+<script src="ajax.js"></script>
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
-
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI" crossorigin="anonymous"></script>
     <script src="dashboard.js">

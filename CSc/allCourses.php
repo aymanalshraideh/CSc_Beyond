@@ -235,7 +235,7 @@ if($_SESSION['isLogin'] == true){
 
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">All Courses</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -274,7 +274,7 @@ if($_SESSION['isLogin'] == true){
                 if ($_SESSION['isAdmin'] == true) :
 
                 ?>
-                    <h2>All Users</h2>
+                  
                     <?php
                     $sql = "SELECT * FROM courses ";
                     $result = mysqli_query($conn, $sql);
@@ -303,7 +303,6 @@ if($_SESSION['isLogin'] == true){
                                     <th>Course Name</th>
                                     <th>Course Discription</th>
                                     
-                                    <th>Activation</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -328,13 +327,7 @@ if($_SESSION['isLogin'] == true){
                                             <?php } else {?>
                                                 <td>Not Active</td>
                                                 <?php }?> -->
-                                            <td>
-                                                <!-- <form action="activation.php" method="post" style="display: inline-block;">
-                                                    <input type="hidden" name="active" value="<?php echo $value["activation"] ?>">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-info">Activate</button>
-                                                </form> -->
-                                            </td>
+                                        
                                             <td>
                                                 <form action="editCourse.php" method="GET" style="display: inline-block;">
                                                     <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
