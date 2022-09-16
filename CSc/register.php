@@ -11,7 +11,7 @@ require 'conn.php';
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap CSS v5.2.0-beta1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -37,25 +37,25 @@ if (isset($_POST['submit'])) {
           $stInsert = $conn->prepare($sql);
           $result = $stInsert->execute([$firstName, $lastName, $email, $hashed_password, $gender, $address]);
           if ($result) {
-            echo "<script>alert('Success Register User')</script>";
-            header("location: login.php");
+            // echo "<script>alert('Success Register User')</script>";
+            // header("location: login.php");
           } else {
             echo "<script>alert('Falid Register User')</script>";
           }
         } else {
 
-          echo "<script>alert('please insert valid password')</script>";
+          // echo "<script>alert('please insert valid password')</script>";
         }
       } else {
-        echo "<script>alert('please insert Same password in Two Fields')</script>";
+        // echo "<script>alert('please insert Same password in Two Fields')</script>";
       }
     } else {
 
-      echo "<script>alert('please insert valid Email')</script>";
+      // echo "<script>alert('please insert valid Email')</script>";
     }
   } else {
 
-    echo "<script>alert('Please insert valid name (String Name)')</script>";
+    // echo "<script>alert('Please insert valid name (String Name)')</script>";
   }
 }
 
@@ -71,26 +71,29 @@ if (isset($_POST['submit'])) {
           <div class="card text-black" style="border-radius: 25px;">
             <div class="card-body p-md-5">
               <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <div id="addEmployeeModal" class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                 
+  <h6 id="alert" ></h6>
 
-                  <form class="mx-1 mx-md-4" method="post" action=''>
+
+                  <form class="mx-1 mx-md-4" id="fupForm" name="form1" method="post">
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example1c">Your First Name</label>
-                        <input type="text" id="form3Example1c" name='fname' class="form-control" />
-
+                        <input type="text" onchange="onchang()" name='fname' id="fname" class="form-control" />
+                         <label for="" id="fnamel"></label>
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example1c">Your last Name</label>
-                        <input type="text" id="form3Example1c" name='lname' class="form-control" />
-
+                        <input type="text"  name='lname' id="lname" class="form-control" />
+                        <label for="" id="lnamel"></label>
                       </div>
                     </div>
 
@@ -98,7 +101,7 @@ if (isset($_POST['submit'])) {
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example3c">Your Email</label>
-                        <input type="email" id="form3Example3c" name='email' class="form-control" />
+                        <input type="email"  name='email' id="email" class="form-control" />
 
                       </div>
                     </div>
@@ -107,7 +110,7 @@ if (isset($_POST['submit'])) {
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Password</label>
-                        <input type="password" id="form3Example4c" name='password' class="form-control" />
+                        <input type="password"  name='password' id="password" class="form-control" />
 
                       </div>
                     </div>
@@ -115,7 +118,7 @@ if (isset($_POST['submit'])) {
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Confermd Password</label>
-                        <input type="password" id="form3Example4c" name='repassword' class="form-control" />
+                        <input type="password"  name='repassword' id="repassword" class="form-control" />
 
                       </div>
                     </div>
@@ -123,7 +126,7 @@ if (isset($_POST['submit'])) {
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Address</label>
-                        <input type="text" id="form3Example4c" name='address' class="form-control" />
+                        <input type="text"  name='address' id="address" class="form-control" />
 
                       </div>
                     </div>
@@ -139,7 +142,7 @@ if (isset($_POST['submit'])) {
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Gender</label>
-                        <select class="form-select" name='gender' aria-label="Default select example">
+                        <select class="form-select" name='gender' id="gender" aria-label="Default select example">
                           <option selected>Select Gender</option>
                           <option value="male">Male</option>
                           <option value="female">Female</option>
@@ -151,7 +154,10 @@ if (isset($_POST['submit'])) {
 
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" name='submit' class="btn btn-primary btn-lg">Register</button>
+                      <!-- <input id="submit" type="button"  class="btn btn-primary btn-lg" value="Submit">
+                     -->
+                     <input type="button" name="save" class="btn btn-primary" value="Save to database" id="butsave">
+                      <!-- <button id="submit"   class="btn btn-primary btn-lg" value="Submit">Register</button> -->
                     </div>
 
                   </form>
@@ -178,7 +184,7 @@ if (isset($_POST['submit'])) {
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-
+<script src="ajax.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
 

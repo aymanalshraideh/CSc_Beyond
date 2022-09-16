@@ -1,10 +1,10 @@
 <?php
 require 'conn.php';
-session_start(); 
-if($_SESSION['isLogin'] == true){
-    if($_SESSION['active'] == true){
-
-    }elseif($_SESSION['active'] == false){echo '<script>
+session_start();
+if ($_SESSION['isLogin'] == true) {
+    if ($_SESSION['active'] == true) {
+    } elseif ($_SESSION['active'] == false) {
+        echo '<script>
         function myFunction() {
           let text = "Your Account Not Active pleace contact with Admin.";
           if (confirm(text) == true) {
@@ -15,11 +15,9 @@ if($_SESSION['isLogin'] == true){
           window.location.href = "logout.php";
         }
         myFunction()
-        </script>'; 
-        
-        
+        </script>';
     }
-}else{
+} else {
     header("location: login.php");
 }
 
@@ -158,7 +156,7 @@ if($_SESSION['isLogin'] == true){
 </head>
 
 <body>
-<!-- <script>
+    <!-- <script>
 function showHint(str) {
     if (str.length == 0) {
         document.getElementById("txtHint").innerHTML = "";
@@ -182,7 +180,7 @@ function showHint(str) {
         </button>
         <input type="search" class="form-control" onkeyup="showHint(this.value)" id="datatable-search-input">
         <div id="txtHint">
-</div>
+        </div>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="logout.php">Sign out</a>
@@ -202,7 +200,7 @@ function showHint(str) {
                             </a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="index.php">
                                 <span data-feather="file"></span>
                                 Home
                             </a>
@@ -214,243 +212,616 @@ function showHint(str) {
                             <li class="nav-item">
                                 <a class="nav-link" href="addUser.php">
                                     <span data-feather="file"></span>
-                                    Add User
+                                    Add User PHP
                                 </a>
                             </li>
-                          
-                            <li>
-                                <div class="dropdown">
-                                    <a href="#" class="nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Courses
-                                    </a>
+                            <li class="nav-item">
 
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="addCourse.php">Add Courses</a>
-                                        <a class="dropdown-item" href="allCourses.php">All Courses</a>
-                                    
-                                    </div>
-                                </div>
-
+                                <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="">
+                                    <span data-feather="file"></span>
+                                    Add User Ajax
+                                </a>
                             </li>
                             <li>
                                 <div class="dropdown">
-                                    <a href="#" class="nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Marks
-                                    </a>
+                                  
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="markUsers.php">Add Mark</a>
-                                    
-                                       
-                                    </div>
-                                </div>
-
+                                      
+                            <li class="nav-item">
+                                  <a class="dropdown-item" href="addCourse.php">Add Courses PHP</a>
+                                <a class="nav-link" data-toggle="modal" data-target="#addCourse" href="">
+                                    <span data-feather="file"></span>
+                                    Add Course Ajax
+                                </a>
+                                <a class="dropdown-item" href="allCourses.php">All Courses PHP</a>
                             </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-            </nav>
 
-            <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This week
-                        </button>
+                            <a class="dropdown-item" href="markUsers.php">Add Mark</a>
+                            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+                </div>
+        </div>
+
+        </li>
+        <li>
+            <div class="dropdown">
+                <a href="#" class="nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Marks
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+
+
+                </div>
+            </div>
+
+        </li>
+        <li>
+            <div class="dropdown">
+                <a href="#" class="nav-link" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Marks
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+
+
+                </div>
+            </div>
+
+        </li>
+        
+    <?php endif; ?>
+    </ul>
+    </div>
+    </nav>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                     </div>
-                </div>
+                    <form id="fupForm" name="form1" method="post">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">First Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
 
-
-                <div class="container">
-                    <div class="main-body">
-
-
-
-                        <div class="row gutters-sm">
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                            <div class="mt-3">
-                                                <h4><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname'] ?></h4>
-                                                <p class="text-secondary mb-1">Full Stack Developer</p>
-                                                <p class="text-muted font-size-sm"> <?php echo $_SESSION['email'] ?></p>
-
+                                                <input type="text" class="form-control" name='fname' id="fname">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">First Name</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?php echo $_SESSION['fname'] ?>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Last Name</h6>
                                         </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Last Name</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?php echo $_SESSION['lname'] ?>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?php echo $_SESSION['email'] ?>
-                                            </div>
-                                        </div>
-                                        <hr>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
 
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Address</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?php echo $_SESSION['address'] ?>
+                                                <input type="text" class="form-control" name='lname' id="lname">
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Gender</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                <?php echo $_SESSION['gender'] ?>
-                                            </div>
-                                        </div>
-                                        <hr>
-
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="email" class="form-control" name='email' id="email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='address' id="address">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="password" class="form-control" name='password' id="password">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Confirm Password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="password" class="form-control" name='repassword' id="repassword">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Gender</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <select class="form-select" name='gender' id="gender" aria-label="Default select example">
+                                                    <option selected>Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 </div>
+                            </div>
 
 
 
+
+                            <div class="modal-footer">
+
+                                <input type="button" name="save" class="btn btn-primary" value="Add User" id="butsave">
 
 
                             </div>
                         </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Edit User -->
+
+    <div class="modal fade" id="update_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    </div>
+
+                    <form id="fupFormm" name="fform1" method="post">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">First Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='fname' id="efname_modal">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Last Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='lname' id="elname_modal">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="email" class="form-control" name='email' id="eemail_modal">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='address' id="eaddress_modal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Gender</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                            <select class="form-select" name='gender' id="gender" aria-label="Default select example">
+                                                    <option selected>Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+
+
+                            <input type="hidden" name="id" id="id_modal" class="form-control-sm">
+
+                            <div class="modal-footer">
+
+                                <input type="button" name="save" class="btn btn-primary" data-dismiss="modal" value="Edit User" id="butsavee">
+
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- add Course -->
+
+    <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    </div>
+
+                    <form  method="post">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Course Name</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='title' id="title">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">escription</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <div class="mb-3">
+
+                                                <input type="text" class="form-control" name='description' id="description">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="modal-footer">
+
+                                <input type="button" name="save" class="btn btn-primary" value="Add User" id="subCourse">
+
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar"></span>
+                    This week
+                </button>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="main-body">
+
+
+
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname'] ?></h4>
+                                        <p class="text-secondary mb-1">Full Stack Developer</p>
+                                        <p class="text-muted font-size-sm"> <?php echo $_SESSION['email'] ?></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">First Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?php echo $_SESSION['fname'] ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Last Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?php echo $_SESSION['lname'] ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?php echo $_SESSION['email'] ?>
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?php echo $_SESSION['address'] ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Gender</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <?php echo $_SESSION['gender'] ?>
+                                    </div>
+                                </div>
+                                <hr>
+
+                            </div>
+                        </div>
+
+
+
+
 
                     </div>
                 </div>
 
+            </div>
+        </div>
 
-                <?php
-                if ($_SESSION['isAdmin'] == true) :
 
-                ?>
-                    <h2>All Users</h2>
-                    <?php
-                    $sql = "SELECT * FROM users ";
-                    $result = mysqli_query($conn, $sql);
-                    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        <?php
+        if ($_SESSION['isAdmin'] == true) :
 
-                    ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Gender</th>
-                                    <th>State</th>
-                                    <th>Activation</th>
-                                    <th>Marks</th>
-                                    <th>Action</th>
+        ?>
+            <h2>All Users</h2>
+            <?php
+            // $sql = "SELECT * FROM users ";
+            // $result = mysqli_query($conn, $sql);
+            // $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-                                </tr>
-                            </thead>
-                            <tbody id="table">
-      
-    </tbody>
-                        </table>
-                    </div>
-                <?php endif; ?>
-                <?php
-                $userId=$_SESSION['userId'];
-                if ($_SESSION['isAdmin'] == false) :
-              
-                ?>
-                    <h2>Marks</h2>
-                    <?php
-                    $sqll = "SELECT * FROM marks
+            ?>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>State</th>
+                            <th>Activation</th>
+                            <th>Marks</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+        <?php
+        $userId = $_SESSION['userId'];
+        if ($_SESSION['isAdmin'] == false) :
+
+        ?>
+            <h2>Marks</h2>
+            <?php
+            $sqll = "SELECT * FROM marks
                     LEFT JOIN courses
                     ON courses.id = marks.cours_id
                     LEFT JOIN users
                     ON users.id = marks.user_id WHERE marks.user_id =$userId";
-                    $resultd = mysqli_query($conn, $sqll);
-                    $rows = mysqli_fetch_all($resultd, MYSQLI_ASSOC);
-                    // echo '<pre>';print_r($rows);echo '</pre>';
-                    //  print_r($rows);
-                    ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    
-                                    <th> <h4>Subject Name</h4> </th>
-                                    <th> <h4>Description</h4> </th>
-                                    <th> <h4>Mark</h4> </th>
-                                   
+            $resultd = mysqli_query($conn, $sqll);
+            $rows = mysqli_fetch_all($resultd, MYSQLI_ASSOC);
+            // echo '<pre>';print_r($rows);echo '</pre>';
+            //  print_r($rows);
+            ?>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-
-
+                            <th>
+                                <h4>Subject Name</h4>
+                            </th>
+                            <th>
+                                <h4>Description</h4>
+                            </th>
+                            <th>
+                                <h4>Mark</h4>
+                            </th>
 
 
-                                foreach ($rows as  $value) :
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
-                                    
-                                ?>
-                                        <tr>
-                                            <td> <h6><?php echo $value['title'] ?></h6> </td>
-                                            <td> <h6><?php echo $value['description'] ?></h6> </td>
-                                            <td> <h6> <?php echo $value['mark'] ?></h6></td>
-                                            
 
-                                        </tr>
-                                <?php 
-                                endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endif; ?>
-            </main>
-        </div>
+
+
+                        foreach ($rows as  $value) :
+
+
+                        ?>
+                            <tr>
+                                <td>
+                                    <h6><?php echo $value['title'] ?></h6>
+                                </td>
+                                <td>
+                                    <h6><?php echo $value['description'] ?></h6>
+                                </td>
+                                <td>
+                                    <h6> <?php echo $value['mark'] ?></h6>
+                                </td>
+
+
+                            </tr>
+                        <?php
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+    </main>
+    </div>
     </div>
 
-<script src="ajax.js"></script>
-    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script>
-   
+    <script src="ajax.js"></script>
+    <!-- <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-DBjhmceckmzwrnMMrjI7BvG2FmRuxQVaTfFYHgfnrdfqMhxKt445b7j3KBQLolRl" crossorigin="anonymous"></script> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI" crossorigin="anonymous"></script>
-    <script src="dashboard.js">
-        
-    </script>
+    <!-- <script src="dashboard.js">
+
+    </script> -->
 </body>
 
 </html>

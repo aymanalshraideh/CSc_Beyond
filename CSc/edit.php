@@ -24,7 +24,7 @@ if($_SESSION['isLogin'] == true){
 <body>
 
     <?php
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $sql = "SELECT * FROM users WHERE id='$id' ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -37,9 +37,9 @@ $firstName=$_POST['fname'];
  
   $address=$_POST['address'];
 // $sqlupdate = "UPDATE users SET fname='$firstName' ,lname='$lastName' ,email='$email' ,password='$password' ,address='$address' WHERE  WHERE id='$id'";
-$ss="UPDATE users SET fname='$firstName' ,lname='$lastName' ,email='$email' ,password='$password' ,address='$address'   WHERE id='$id'";
+$ss="UPDATE users SET fname='$firstName' ,lname='$lastName' ,email='$email'  ,address='$address'   WHERE id='$id'";
 $conn->query($ss) ;
-header("location: index.php");
+// header("location: index.php");
 
 
 }

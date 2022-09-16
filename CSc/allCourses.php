@@ -41,6 +41,7 @@ if($_SESSION['isLogin'] == true){
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 
@@ -172,6 +173,7 @@ if($_SESSION['isLogin'] == true){
         </ul>
     </nav>
 
+    
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -307,45 +309,13 @@ if($_SESSION['isLogin'] == true){
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
+                            <tbody id="course">
+                                
 
 
 
 
-                                foreach ($rows as  $value) :
-
-                                   
-                                ?>
-                                        <tr>
-                                            <td><?php echo $value['id'] ?></td>
-                                            <td><?php echo $value['title'] ?></td>
-                                            <td><?php echo $value['description'] ?></td>
-                                         
-                                            <!-- <?php if($value['activation']==1){ ?>
-                                            <td>Active</td>
-                                            <?php } else {?>
-                                                <td>Not Active</td>
-                                                <?php }?> -->
-                                        
-                                            <td>
-                                                <form action="editCourse.php" method="GET" style="display: inline-block;">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                                                    <button type="submit" class="btn btn-sm btn-primary">Edit</button>
-                                                </form>
-                                                <form action="deleteCource.php" method="POST" style="display: inline-block;">
-                                                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-
-                                                 
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
-                                            </td>
-
-
-
-                                        </tr>
-                                <?php 
-                                endforeach; ?>
+                              
                             </tbody>
                         </table>
                     </div>
@@ -359,7 +329,7 @@ if($_SESSION['isLogin'] == true){
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI" crossorigin="anonymous"></script>
-    <script src="dashboard.js">
+    <script src="ajax.js">
         
     </script>
 </body>

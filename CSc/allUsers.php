@@ -34,7 +34,8 @@ foreach ($rows as  $value) :
                 <form action="activation.php" method="post" style="display: inline-block;">
                     <input type="hidden" name="active" value="<?php echo $value["activation"] ?>">
                     <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                    <button type="submit" class="btn btn-sm btn-info">Activate</button>
+                    <!-- <button type="submit" class="btn btn-sm btn-info">Activate</button> -->
+                    <button type="button" class="btn btn-sm btn-info" onclick="activeuser(<?php echo $value['id'] ?>,<?php echo $value['activation'] ?>)">Activate</button>
                 </form>
             </td>
             <td>
@@ -46,13 +47,25 @@ foreach ($rows as  $value) :
                 </form>
             </td>
             <td>
-                <form action="edit.php" method="GET" style="display: inline-block;">
-                    <input type="hidden" name="id" value="<?php echo $value["id"] ?>">
-                    <button type="submit" class="btn btn-sm btn-primary">Edit</button>
-                </form>
+                <!-- <form action="edit.php" method="GET" style="display: inline-block;">
+                    <input type="hidden" name="id" value="<?//php echo $value["id"] ?>"> -->
+                    <button type="button" class="btn btn-success btn-sm update" data-toggle="modal" data-keyboard="false" data-backdrop="static" data-target="#update_user"
+                    data-id="<?php echo $value['id'];?>"
+			       data-fname="<?php echo $value['fname'];?>"
+			       data-lname="<?php echo $value['lname'];?>"
+			       data-email="<?php echo $value['email'];?>"
+			       data-address="<?php echo $value['address'];?>"
+			       data-gender="<?php echo $value['gender'];?>"
+			   
+                    >
+  Edit
+</button>
+
+                    <!-- <button type="submit" class="btn btn-sm btn-primary" >Edit</button>
+                </form> -->
               
 
-                   
+   
                     <button type="button" class="btn btn-sm btn-danger" onclick="deletuser(<?php echo $value['id'] ?>)">Delete</button>
                 
             </td>

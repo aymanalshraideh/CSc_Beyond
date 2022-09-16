@@ -7,7 +7,7 @@ if($_SESSION['isLogin'] == true){
     header("location: login.php");
 }
 $id=$_POST['id'];
-if ($_POST['active'] == 0) {
+if ($_POST['avtive'] == 0) {
     $active = "UPDATE users SET activation='1' WHERE id='$id' ";
     
     

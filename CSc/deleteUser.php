@@ -13,4 +13,4 @@ $sql = "DELETE FROM users WHERE id='$id'";
 
 $conn->query($sql);
 $_SESSION['deleteCourse']='ll';
-    header("location:index.php");
+    // header("location:index.php");
